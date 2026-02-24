@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import StatsCard from './components/StatsCard';
 import BlockCard from './components/BlockCard';
 
-const API = '/api';
+const API = '/api'; // Base URL for backend API
 
 export default function Dashboard() {
   const [chain, setChain] = useState([]);

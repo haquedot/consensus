@@ -99,11 +99,13 @@ export default function PosDemo() {
     try {
       await fetch(`${API}/reset_pos`, { method: 'POST' });
       setValidators({});
-      setPosChain([]);
       setLastCreated(null);
       setLogs([]);
+      await fetchPosChain();
       addLog('Chain reset to genesis', 'info');
-    } catch (e) {}
+    } catch (e) {
+      addLog('Reset failed', 'error');
+    }
   };
 
   const totalStake = Object.values(validators).reduce((a, b) => a + b, 0);
