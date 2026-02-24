@@ -1,0 +1,111 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-primary: #f8fafc;
+  --bg-card:    #ffffff;
+  --accent:     #4f46e5;
+  --accent-alt: #d97706;
+}
+
+body {
+  background: var(--bg-primary);
+  color: #0f172a;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #e0e7ff;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 3px;
+}
+
+/* Light card — replaces glass-card */
+.glass-card {
+  background: var(--bg-card);
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.glass-card:hover {
+  border-color: #c7d2fe;
+  box-shadow: 0 4px 16px rgba(79,70,229,0.08);
+}
+
+/* Chain connector */
+.chain-connector {
+  position: relative;
+}
+.chain-connector::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -32px;
+  width: 32px;
+  height: 3px;
+  background: #6366f1;
+}
+.chain-connector:last-child::after {
+  display: none;
+}
+
+/* Validator bar animation */
+.stake-bar {
+  transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Button press */
+.btn-shine {
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow 0.15s;
+}
+.btn-shine:hover {
+  box-shadow: 0 4px 14px rgba(79,70,229,0.25);
+}
+
+/* Mining animation */
+@keyframes mining-pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.04); opacity: 0.85; }
+}
+.mining-active {
+  animation: mining-pulse 1s ease-in-out infinite;
+}
+
+/* Tooltip */
+.tooltip {
+  position: relative;
+}
+.tooltip::after {
+  content: attr(data-tip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 4px 12px;
+  background: #1e1b4b;
+  color: #e0e7ff;
+  border-radius: 8px;
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+.tooltip:hover::after {
+  opacity: 1;
+}
+
+/* Code blocks */
+pre code {
+  font-family: 'Cascadia Code', 'Fira Code', 'Consolas', monospace;
+}
