@@ -160,7 +160,7 @@ export default function Dashboard() {
               exit={{ opacity: 0, height: 0 }}
               className="bg-emerald-50 border border-emerald-200 rounded-xl p-4 mt-4"
             >
-              <p className="text-emerald-700 font-semibold">✓ {lastMined.Message}</p>
+              <p className="text-emerald-700 font-semibold">✓ {lastMined.message}</p>
               <div className="grid grid-cols-2 gap-4 mt-3 text-sm">
                 <div>
                   <span className="text-slate-500">Block Index: </span>
@@ -184,7 +184,7 @@ export default function Dashboard() {
       <div>
         <h2 className="text-2xl font-bold text-slate-900 mb-4">Recent PoW Blocks</h2>
         <div className="flex space-x-6 overflow-x-auto pb-4">
-          {chain.reverse().map((block, i) => (
+          {[...chain].map((block, i) => (
             <div key={block.index} className="flex items-center">
               <BlockCard block={block} index={i} isGenesis={block.index === 1} />
               {i < chain.slice(-5).length - 1 && (
